@@ -4,9 +4,9 @@ require File.expand_path('../lib/glowstone/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Tom Heinan"]
   gem.email         = ["me@tomheinan.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ""
+  gem.description   = "Glowstone helps shed light on your Minecraft server!"
+  gem.summary       = "This tiny gem implements the Gamespy query protocol to access server information built in to all Minecraft servers version 1.8+."
+  gem.homepage      = "http://tomheinan.com"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
