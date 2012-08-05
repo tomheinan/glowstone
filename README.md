@@ -1,6 +1,8 @@
 # Glowstone
 
-TODO: Write a gem description
+This tiny gem implements the Gamespy query protocol to access pertinent real-time information hidden away inside your Minecraft server.
+
+All credit goes to [Dinnerbone](http://dinnerbone.com/) for his [excellent post](http://dinnerbone.com/blog/2011/10/14/minecraft-19-has-rcon-and-query/) on the inner workings of the protocol.  Check out his Python implementation [here](https://github.com/Dinnerbone/mcstatus).
 
 ## Installation
 
