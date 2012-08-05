@@ -7,7 +7,7 @@ Gem::Specification.new do |gem|
 	gem.email         = ["me@tomheinan.com"]
 	gem.description   = "Glowstone helps shed light on your Minecraft server!"
 	gem.summary       = "This tiny gem implements the Gamespy query protocol to access pertinent real-time information hidden away inside your Minecraft server."
-	gem.homepage      = "http://tomheinan.com"
+	gem.homepage      = "https://github.com/tomheinan/glowstone"
 
 	gem.files         = `git ls-files`.split($\)
 	gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
