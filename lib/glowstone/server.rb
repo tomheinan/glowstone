@@ -22,14 +22,21 @@ module Glowstone
 			response = perform_request(MAGIC_BYTES + REQUEST_BYTE[:query] + CLIENT_ID + get_session_id + CLIENT_ID)
 			status = StatusPacket.read response
 
-			@motd = status.motd
-			@gamemode = status.gametype
-			@version = status.version
-			@plugins = status.plugins.split(/;\s*/)
-			@map_name = status.map_name
+			@motd = status.motd.to_s
+			@gamemode = status.gametype.to_s
+			@version = status.version.to_s
+			@plugins = status.plugins.to_s.split(/;\s*/)
+			@map_name = status.map_name.to_s
 			@num_players = status.num_players.to_i
 			@max_players = status.max_players.to_i
-			@players = status.players
+
+
+			player_array = status.players.to_ary
+			player_array.each_with_index do |player, index|
+				player_array[index] = player.to_s
+			end
+			@players = player_array
+
 
 			self
 		end
