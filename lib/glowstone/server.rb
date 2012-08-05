@@ -14,13 +14,12 @@ module Glowstone
 
 			@socket = UDPSocket.new
 			@socket.connect(@host, @port)
-			#refresh
+			refresh
 		end
 
 		def refresh
 			response = perform_request(MAGIC_BYTES + REQUEST_BYTE[:query] + CLIENT_ID + get_session_id + CLIENT_ID)
 			status = StatusPacket.read response
-			puts status.snapshot
 
 			@motd = status.motd
 			@gametype = status.gametype
