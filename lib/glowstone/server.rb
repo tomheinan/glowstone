@@ -22,7 +22,7 @@ module Glowstone
 			status = StatusPacket.read response
 
 			@motd = status.motd
-			@gametype = status.gametype
+			@gamemode = status.gametype
 			@version = status.version
 			@plugins = status.plugins.split(/;\s*/)
 			@map_name = status.map_name
