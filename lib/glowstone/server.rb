@@ -34,6 +34,16 @@ module Glowstone
 			self
 		end
 
+		def to_hash
+			vars_to_skip = ["@timeout", "@socket"]
+
+			hash = Hash.new
+			instance_variables.each do |var|
+				hash[var.to_s.delete("@").to_sym] = instance_variable_get(var) unless vars_to_skip.include?(var.to_s)
+			end
+			hash
+		end
+
 		protected ##################### helper methods and other such shenanigans #
 
 		def get_session_id
