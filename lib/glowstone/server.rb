@@ -6,6 +6,7 @@ module Glowstone
 
 		attr_reader :host, :port
 		attr_accessor :timeout
+		attr_reader :motd, :gamemode, :version, :plugins, :map_name, :num_players, :max_players, :players
 
 		def initialize(host="localhost", port=25565)
 			@host = host
