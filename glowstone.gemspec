@@ -15,5 +15,5 @@ Gem::Specification.new do |gem|
 	gem.require_paths = ["lib"]
 	gem.version       = Glowstone::VERSION
 
-	gem.add_dependency "bindata"
+	gem.add_dependency "bindata", "~> 1.4.5"
 end
