@@ -24,7 +24,13 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Glowstone's interface is super simple.  Just instantiate yourself a new server object, like so:
+
+```ruby
+my_server = Glowstone::Server.new "minecraft.tomheinan.com"
+```
+
+... and Glowstone will give you back a server object full of all that delicious realtime data you've been craving:
 
 ## Contributing
 
