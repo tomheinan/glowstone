@@ -22,6 +22,8 @@ module Glowstone
 			response = perform_request(MAGIC_BYTES + REQUEST_BYTE[:query] + CLIENT_ID + get_session_id + CLIENT_ID)
 			status = StatusPacket.read response
 
+			# there's some kind of weird bug with BinData wherein its native
+			# datatypes don't play well with rails, so i'm converting them all here
 			@motd = status.motd.to_s
 			@gamemode = status.gametype.to_s
 			@version = status.version.to_s
@@ -30,13 +32,11 @@ module Glowstone
 			@num_players = status.num_players.to_i
 			@max_players = status.max_players.to_i
 
-
 			player_array = status.players.to_ary
 			player_array.each_with_index do |player, index|
 				player_array[index] = player.to_s
 			end
 			@players = player_array
-
 
 			self
 		end
