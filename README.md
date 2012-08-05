@@ -32,6 +32,10 @@ my_server = Glowstone::Server.new "minecraft.tomheinan.com"
 
 ... and Glowstone will give you back a server object full of all that delicious realtime data you've been craving:
 
+```ruby
+=> #<Glowstone::Server:0x007ffe250099b8 @host="minecraft.tomheinan.com", @port=25565, @timeout=3, @socket=#<UDPSocket:fd 8>, @motd="Welcome to Arkenfall!", @gamemode="SMP", @version="1.2.5", @plugins=["CraftBukkit on Bukkit 1.2.5-R4.1-MCPC-SNAPSHOT: mod_MinecraftForge ForgeMod", "AdminCmd 6.0.1 (BUILD 01.06.2012 @ 10:41:06)", "WorldEdit 5.3", "ExtraBiomes XL ForgeMod", "WorldGuard 5.5.3", "PermissionsBukkit 1.6"], @map_name="arkenfall", @num_players=1, @max_players=16, @players=["tomheinan"]>
+```
+
 ## Contributing
 
 1. Fork it
