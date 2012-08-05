@@ -1,6 +1,6 @@
 # Glowstone
 
-This tiny gem implements the Gamespy query protocol to access pertinent real-time information hidden away inside your Minecraft server. You give Glowstone your server address and port, and Glowstone gives you:
+This tiny gem implements the [GameSpy query protocol](http://int64.org/docs/gamestat-protocols/gamespy2.html) to access pertinent real-time information hidden away inside your Minecraft server. You give Glowstone your server info, and Glowstone gives you:
 - which players are currently online
 - the base map name and default gamemode
 - what plugins you're running
