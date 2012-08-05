@@ -48,6 +48,7 @@ module Glowstone
 			packet = if select([@socket], nil, nil, @timeout)
 				@socket.recvfrom(2048)
 			end
+			raise SocketError if packet == nil
 			packet.first
 		end
 
