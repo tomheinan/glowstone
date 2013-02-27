@@ -27,16 +27,25 @@ Or install it yourself as:
 Glowstone's interface is super simple.  Just instantiate yourself a new server object, like so:
 
 ```ruby
-my_server = Glowstone::Server.new "minecraft.tomheinan.com"
+my_server = Glowstone::Server.new "tomheinan.com"
 ```
 
 ... and Glowstone will whip you up a server object full of all that delicious realtime data you've been craving:
 
 ```ruby
-=> #<Glowstone::Server:0x007ffe250099b8 @host="minecraft.tomheinan.com", @port=25565, @timeout=3, @socket=#<UDPSocket:fd 8>, @motd="Welcome to Arkenfall!", @gamemode="SMP", @version="1.2.5", @plugins=["CraftBukkit on Bukkit 1.2.5-R4.1-MCPC-SNAPSHOT: mod_MinecraftForge ForgeMod", "AdminCmd 6.0.1 (BUILD 01.06.2012 @ 10:41:06)", "WorldEdit 5.3", "ExtraBiomes XL ForgeMod", "WorldGuard 5.5.3", "PermissionsBukkit 1.6"], @map_name="arkenfall", @num_players=1, @max_players=16, @players=["tomheinan"]>
+=> #<Glowstone::Server:0x007f9af2d17768 @host="minecraft.tomheinan.com", @port=25565, @timeout=10, @socket=#<UDPSocket:fd 7>, @motd="Welcome to Arkenfall!", @gamemode="SMP", @version="1.4.7", @plugins=["ThirdRail 1.0.0", "Vault 1.2.22-b277", "AdminCmd 7.2.0 (BUILD 22.01.2013 @ 22:13:34)", "WorldEdit 5.5.1", "TreeAssist 5.0", "WorldGuard 747-e3dfc6a", "PlayerMarkers 0.2.0", "PermissionsBukkit 2.0", "SimpleSpleef 3.4.2"], @map_name="arkenfall", @num_players=1, @max_players=16, @players=["tomheinan"]>
 ```
 
 And that's all there is to it!  No fancy bukkit plugins or server-side scripts required.  If your server object is particularly long-lived and you find yourself wanting to refresh its data, just do `my_server.refresh` and it'll pull down the latest information for you.
+
+### Options and Defaults
+
+```ruby
+Glowstone::Server.new("localhost",
+	:port => 25565,
+	:timeout => 10
+)
+```
 
 ## Troubleshooting
 
@@ -45,7 +54,7 @@ And that's all there is to it!  No fancy bukkit plugins or server-side scripts r
 The first thing to do is make sure your server is set up to send it.  Check your `server.properties` file and make sure the `enable-query` flag is set to `true`. Then, make sure your server's firewall allows connections on UDP port `25565`.  If you've changed that value via the `query.port` flag, then you'll also need to specify it when instantiating Glowstone, like so:
 
 ```ruby
-my_server = Glowstone::Server.new("myminecraftserver.com", 12345)
+my_server = Glowstone::Server.new("myminecraftserver.com", :port => 12345)
 ```
 
 ## Contributing

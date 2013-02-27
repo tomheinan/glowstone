@@ -1,3 +1,4 @@
+require 'resolv'
 require 'socket'
 
 module Glowstone
@@ -8,11 +9,27 @@ module Glowstone
 		attr_accessor :timeout
 		attr_reader :motd, :gamemode, :version, :plugins, :map_name, :num_players, :max_players, :players
 
-		def initialize(host="localhost", port=25565)
-			@host = host
-			@port = port
-			@timeout = SOCKET_TIMEOUT
+		def initialize(host="localhost", options={})
+			
+			# backwards compatibility for old style invocation
+			if options.kind_of?(Integer)
+				options = {:port => options.to_i}
+			end
 
+			# if the host is a srv record, get its info
+			begin
+				resource = Resolv::DNS.new.getresource("_minecraft._tcp.#{host}", Resolv::DNS::Resource::IN::SRV)
+				@host = resource.target.to_s
+				@port = resource.port.to_i
+			rescue
+				@host = host
+				@port = options[:port] ? options[:port].to_i : DEFAULT_PORT
+			end
+
+			# set request timeout
+			@timeout = options[:timeout] ? options[:timeout].to_i : DEFAULT_SOCKET_TIMEOUT
+
+			# create a reusable UDP socket
 			@socket = UDPSocket.new
 			@socket.connect(@host, @port)
 			refresh
@@ -27,7 +44,8 @@ module Glowstone
 			@motd = status.motd.to_s
 			@gamemode = status.gametype.to_s
 			@version = status.version.to_s
-			@plugins = status.plugins.to_s.split(/;\s*/)
+
+			@plugins = status.plugins.to_s.gsub!(/^(craft)?bukkit[^:]*:\s*/i, "").split(/;\s*/)
 			@map_name = status.map_name.to_s
 			@num_players = status.num_players.to_i
 			@max_players = status.max_players.to_i
