@@ -12,7 +12,7 @@ module Glowstone
 		def initialize(host="localhost", options={})
 			
 			# backwards compatibility for old style invocation
-			if options.kind_of?(Integer)
+			if options.is_a?(Numeric)
 				options = {:port => options.to_i}
 			end
 

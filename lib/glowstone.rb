@@ -9,6 +9,6 @@ module Glowstone
 	CLIENT_ID    = [0x67, 0x6C, 0x6F, 0x77]
 
 	DEFAULT_PORT = 25565
-	DEFAULT_SOCKET_TIMEOUT = 10 # seconds
+	DEFAULT_SOCKET_TIMEOUT = 5 # seconds
 
 end
