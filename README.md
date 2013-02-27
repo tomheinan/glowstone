@@ -43,7 +43,7 @@ And that's all there is to it!  No fancy bukkit plugins or server-side scripts r
 ```ruby
 Glowstone::Server.new("localhost",
 	:port => 25565,
-	:timeout => 10
+	:timeout => 5 # seconds before we give up on the socket connection
 )
 ```
 
