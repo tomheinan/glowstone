@@ -6,7 +6,7 @@ module Glowstone
 	class Server
 
 		attr_reader :host, :port
-		attr_accessor :timeout
+		attr_accessor :name, :timeout
 		attr_reader :motd, :gamemode, :version, :plugins, :map_name, :num_players, :max_players, :players
 
 		def initialize(host="localhost", options={})
@@ -15,6 +15,9 @@ module Glowstone
 			if options.is_a?(Numeric)
 				options = {:port => options.to_i}
 			end
+
+			# set server name
+			@name = options[:name] ? options[:name].to_s : host
 
 			# if the host is a srv record, get its info
 			begin

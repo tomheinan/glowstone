@@ -33,7 +33,7 @@ my_server = Glowstone::Server.new "tomheinan.com"
 ... and Glowstone will whip you up a server object full of all that delicious realtime data you've been craving:
 
 ```ruby
-=> #<Glowstone::Server:0x007f9af2d17768 @host="minecraft.tomheinan.com", @port=25565, @timeout=10, @socket=#<UDPSocket:fd 7>, @motd="Welcome to Arkenfall!", @gamemode="SMP", @version="1.4.7", @plugins=["ThirdRail 1.0.0", "Vault 1.2.22-b277", "AdminCmd 7.2.0 (BUILD 22.01.2013 @ 22:13:34)", "WorldEdit 5.5.1", "TreeAssist 5.0", "WorldGuard 747-e3dfc6a", "PlayerMarkers 0.2.0", "PermissionsBukkit 2.0", "SimpleSpleef 3.4.2"], @map_name="arkenfall", @num_players=1, @max_players=16, @players=["tomheinan"]>
+=> #<Glowstone::Server:0x007f9af2d17768 @name="tomheinan.com", @host="minecraft.tomheinan.com", @port=25565, @timeout=10, @socket=#<UDPSocket:fd 7>, @motd="Welcome to Arkenfall!", @gamemode="SMP", @version="1.4.7", @plugins=["ThirdRail 1.0.0", "Vault 1.2.22-b277", "AdminCmd 7.2.0 (BUILD 22.01.2013 @ 22:13:34)", "WorldEdit 5.5.1", "TreeAssist 5.0", "WorldGuard 747-e3dfc6a", "PlayerMarkers 0.2.0", "PermissionsBukkit 2.0", "SimpleSpleef 3.4.2"], @map_name="arkenfall", @num_players=1, @max_players=16, @players=["tomheinan"]>
 ```
 
 And that's all there is to it!  No fancy bukkit plugins or server-side scripts required.  If your server object is particularly long-lived and you find yourself wanting to refresh its data, just do `my_server.refresh` and it'll pull down the latest information for you.
@@ -42,6 +42,7 @@ And that's all there is to it!  No fancy bukkit plugins or server-side scripts r
 
 ```ruby
 Glowstone::Server.new("localhost",
+	:name => "#{the hostname above}", # you can put any arbitrary string here
 	:port => 25565,
 	:timeout => 5 # seconds before we give up on the socket connection
 )
