@@ -48,7 +48,7 @@ module Glowstone
 			@gamemode = status.gametype.to_s
 			@version = status.version.to_s
 
-			@plugins = status.plugins.to_s.gsub!(/^(craft)?bukkit[^:]*:\s*/i, "").split(/;\s*/)
+			@plugins = (status.plugins.empty?) ? nil : status.plugins.to_s.gsub!(/^(craft)?bukkit[^:]*:\s*/i, "").split(/;\s*/)
 			@map_name = status.map_name.to_s
 			@num_players = status.num_players.to_i
 			@max_players = status.max_players.to_i
